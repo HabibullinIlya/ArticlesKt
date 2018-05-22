@@ -54,7 +54,7 @@ public class ListArticleActivity extends AppCompatActivity implements ListContra
 
     }
     @Override
-    public void showArticles(@NotNull final List<Article> articles) {
+    public void showArticles(List<Article> articles) {
         adapter = new ArticleAdapter(articles);
         rv.setAdapter(adapter);
         final List<Article> temp = articles;

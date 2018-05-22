@@ -69,9 +69,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
         Log.d("count cursor",String.valueOf(cursor.getCount()));
         int n = cursor.getCount();
         Log.d("n", String.valueOf(n));
+        cursor.moveToFirst();
         for(int i = 0;i<n;i++){
-            //Log.d("TAG sqlite helper", cursor.getString(1));
-            cursor.moveToFirst();
+            Log.d("TAG sqlite helper", cursor.getString(1));
             articles.add(new Article(
                     cursor.getInt(0),
                     cursor.getString(1),
@@ -96,6 +96,11 @@ public class SqliteHelper extends SQLiteOpenHelper {
             Log.d("TAG","save data successful");
             return true;
         }
+    }
+    public int clearArticles(String table){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(table,null,null);
+
     }
 
 }
